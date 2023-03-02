@@ -1,0 +1,9 @@
+<% unless @response.nil? %>
+  <% @response.each do |deal| %>
+    <% if deal.has_key?("deal") %>
+      <% id = deal.values.first.dig("id") %>
+      <p><b>Title:</b> <%= link_to "#{deal.values.first.dig("short_title")}", hot_picks_path(id) %></p>
+      <p>Price: £<%= deal.values.first.dig("price") %></p>
+    <% end %>
+  <% end %>
+<% end %>

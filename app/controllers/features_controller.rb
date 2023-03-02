@@ -1,6 +1,5 @@
 class FeaturesController < ApplicationController
   def index
-    post_params = params
   end
 
   def home
@@ -10,7 +9,9 @@ class FeaturesController < ApplicationController
   end
 
   def picks
-    redirect_to action: index
+    respond_to do |format|
+      format.html { redirect_to action: index }
+    end
   end
 
   def show

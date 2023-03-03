@@ -1,0 +1,7 @@
+<h3> Seach Results </h3>
+
+<% @results.each do |result| %>
+<div class="container">
+  <p><strong>Title: <strong><%= result.short_title %></p>
+  <p><strong>Price: £<strong><%= result.price %></p>
+<% end %>

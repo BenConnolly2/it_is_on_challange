@@ -47,9 +47,18 @@ class DealsController < ApplicationController
     end
   end
 
+  def search
+    if params[:search].blank?
+      redirect_to deals_path and return
+    else
+      @parameter = params[:search].downcase
+      @results = Deal.select(:short_title, :price).where("lower(short_title) LIKE ?", "%#{@parameter}%")
+    end
+  end
+
   private
 
   def permitted_params
-    params.permit(:city, :type, :authenticity_token, :commit, :id, :format)
+    params.permit(:city, :type, :authenticity_token, :commit, :id, :format, :search)
   end
 end

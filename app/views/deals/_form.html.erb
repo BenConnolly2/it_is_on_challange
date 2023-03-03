@@ -1,12 +1,12 @@
 <h1> Pick A destination</h1>
 <div>
-  <%= form_with(url: user_picks_path, local: true, method: :post, turbo: false ) do |f| %>
+  <%= form_with(url: "picks", local: true, method: :post, data: { turbo: false }) do |f| %>
   <%= f.label :city %>
   <%= f.select :city, [["Glasgow", "glasgow" ], ["Edinburgh","edinburgh"], ["Dundee", "dundee"]] %>
   <br>
   <%= f.label :type %>
   <%= f.select :type, [["All","all"], ["Deals", "deals"],["Events", "events"], ["Shop", "shop"]] %>
   <br>
-  <%= f.submit "Find Deals" %>
+  <%= f.submit "Find Deals"  %>
   <% end %>
 </div>

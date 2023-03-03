@@ -1,8 +1,7 @@
 <h2>You have found one of our fantastic deals!</h2>
-
 <div class="container">
-<%= %>
-<p>Title: <%= @single_deal["deal"]["short_title"] %></p>
-<p>What to expect: <%= sanitize @single_deal["deal"]["what_to_expect"] %></p>
-<p>About: <%= sanitize @single_deal["deal"]["about"] %></p>
+  <p><strong>Title: </strong><%= @foo.short_title %></p>
+  <p><strong>What to expect: </strong> <%= sanitize @foo.what_to_expect%></p>
+  <p><strong>About: </strong> <%= sanitize @foo.about%></p>
 </div>
+

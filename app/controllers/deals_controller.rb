@@ -20,7 +20,7 @@ class DealsController < ApplicationController
         Deal.find_or_create_by(offer)
       end
     end
-    @deals ||= Deal.select(:short_title, :price, :offer_id, :city).where(city: params[:city])
+    @deals = Deal.select(:short_title, :price, :offer_id, :city).where(city: params[:city])
   end
 
   def home
@@ -33,17 +33,17 @@ class DealsController < ApplicationController
   end
 
   def show
-    @foo = Deal.find_by(offer_id: params[:id])
-    @bar = API_CLIENT.get_deal_for_city(@foo.city, params[:id])
-    @baz = JSON.parse(@bar.to_s)
+    @selected_deal = Deal.find_by(offer_id: params[:id])
+    response = API_CLIENT.get_deal_for_city(@selected_deal.city, @selected_deal.offer_id)
+    parsed_response = JSON.parse(response.to_s)
     properties = {
-      short_title: @baz["deal"]["short_title"],
-      about: @baz["deal"]["about"],
-      what_to_expect: @baz["deal"]["what_to_expect"]
+      short_title: parsed_response["deal"]["short_title"],
+      about: parsed_response["deal"]["about"],
+      what_to_expect: parsed_response["deal"]["what_to_expect"]
     }
-    @foo.update(properties)
-    if @foo.save!
-      @foo
+    @selected_deal.update(properties)
+    if @selected_deal.save!
+      @selected_deal
     end
   end
 

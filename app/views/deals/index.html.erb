@@ -1,11 +1,10 @@
 <h1> Deals for Page </h1>
+<%= @deals.each do |record| %>
 
-<% unless @response.nil? %>
-  <% @response.each do |deal| %>
-    <% if deal.has_key?("deal") %>
-      <% id = deal.values.first.dig("id") %>
-      <p><b>Title:</b> <%= link_to "#{deal.values.first.dig("short_title")}", hot_picks_path(id) %></p>
-      <p>Price: £<%= deal.values.first.dig("price") %></p>
-    <% end %>
-  <% end %>
+<h3>Title: <%= record.short_title %></h3>
+
+<p>About: <%= record.about %></p>
+
+<p>What to expect: <%= record.what_to_expect %></p>
+
 <% end %>

@@ -233,6 +233,7 @@ DEPENDENCIES
   jbuilder
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
+  rails-html-sanitizer
   sassc-rails
   selenium-webdriver
   sprockets-rails

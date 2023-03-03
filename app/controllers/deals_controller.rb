@@ -9,12 +9,14 @@ class DealsController < ApplicationController
     @response = JSON.parse(response.to_s)
     @response.each do |deal|
       if deal.has_key?("deal")
+        entry = deal.values.first
+        entry.symbolize_keys!
         offer = {
-          offer_id: deal.values.first.dig("id"),
-          short_title: deal.values.first.dig("short_title"),
-          price: deal.values.first.dig("price"),
-          about: deal.values.first.dig("about"),
-          what_to_expect: deal.values.first.dig("what_to_expect")
+          offer_id: entry[:id],
+          short_title: entry[:short_title],
+          price: entry[:price],
+          about: entry[:about],
+          what_to_expect: entry[:what_to_expect]
         }
         Deal.find_or_create_by(offer)
       end
@@ -22,11 +24,14 @@ class DealsController < ApplicationController
   end
 
   def picks
-    redirect_to action: show
   end
 
   def show
-    @selected_deals = Deal.select(:offer_id, :short_title, :price, :about, :what_to_expect)where(city: params[:city])
+    # @selected_deals = Deal.select(:offer_id, :short_title, :price, :about, :what_to_expect).where(city: params[:city])
+
+    client = ApiClient.new
+    deal = client.get_deal_for_city("glasgow", "celentano-s-italian-dining")
+    @single_deal = JSON.parse(deal.to_s)
   end
 
   private

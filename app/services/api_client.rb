@@ -18,3 +18,5 @@ class ApiClient
     self.class.get(url)
   end
 end
+
+"https://api.itison.com/api/110/glasgow/all"

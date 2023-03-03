@@ -46,6 +46,8 @@ gem "httparty"
 
 gem "bootstrap"
 
+gem "rails-html-sanitizer"
+
 # Use Sass to process CSS
 gem "sassc-rails"
 

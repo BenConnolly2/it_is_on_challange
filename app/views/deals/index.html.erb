@@ -1,10 +1,8 @@
-<h1> Deals for Page </h1>
+<h1> Deals for <%= "#{params[:city]}" %></h1>
+<%= params %>
 <%= @deals.each do |record| %>
-
-<h3>Title: <%= record.short_title %></h3>
-
-<p>About: <%= record.about %></p>
-
-<p>What to expect: <%= record.what_to_expect %></p>
-
+  <ul>
+    <li><strong>Title:</strong> <%= link_to "#{record.short_title}", deal_path(record.offer_id) %></li>
+    <li>Price: <%= record.price %></li>
+  </ul>
 <% end %>

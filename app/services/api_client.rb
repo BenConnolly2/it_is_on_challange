@@ -4,7 +4,7 @@ class ApiClient
   include HTTParty
 
   def get_all_deals_for_city(city)
-    url = "https://api.itison.com/api/110/#{city}/deals"
+    url = "https://api.itison.com/api/110/#{city}/all"
     self.class.get(url)
   end
 
@@ -18,5 +18,3 @@ class ApiClient
     self.class.get(url)
   end
 end
-
-"https://api.itison.com/api/110/glasgow/all"

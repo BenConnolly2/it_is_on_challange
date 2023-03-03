@@ -11,12 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_03_02_113912) do
-  create_table "features", force: :cascade do |t|
+  create_table "deals", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "city"
     t.string "short_title"
     t.integer "price"
+    t.text "what_to_expect"
+    t.text "about"
+    t.string "offer_id"
   end
 
 end
